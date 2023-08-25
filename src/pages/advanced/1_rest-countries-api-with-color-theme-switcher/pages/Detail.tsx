@@ -67,7 +67,9 @@ export const Detail: React.FC<DetailProps> = () => {
             <strong>Border Countries:</strong>
             <div className="detail__card__content__border__container">
               {country.borders?.map((border) => (
-                <button key={border}>{border}</button>
+                <button className="chip" key={border}>
+                  {border}
+                </button>
               ))}
               {!country.borders?.length && <span>None</span>}
             </div>

@@ -1,5 +1,4 @@
 .detail__container {
-  padding: 2rem 0;
   display: flex;
   flex-direction: column;
   gap: 4.5rem;
@@ -27,6 +26,8 @@
   justify-content: space-between;
   font-size: 16px;
   line-height: 2;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
 .detail__card__content {
   max-width: 36rem;
@@ -36,14 +37,27 @@
   padding: 2rem 0;
 }
 .detail__card__content__info {
+  gap: 2rem;
   display: flex;
   flex: 1;
-  margin-top: 1rem;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 .detail__card__content__border {
+  margin-top: 3rem;
   display: flex;
 }
 .detail__card__content__border__container {
   display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.chip {
+  background-color: var(--color-elements);
+  color: var(--text);
+  box-shadow: var(--shadow-hover);
+  min-width: 6rem;
+  font-size: 12px;
+  line-height: 1;
 }
