@@ -6,9 +6,11 @@ import "./Layout.css";
 
 export const Layout = () => {
   return (
-    <div>
+    <div className="layout">
       <Navbar />
-      <Outlet />
+      <div className="layout__content">
+        <Outlet />
+      </div>
     </div>
   );
 };

@@ -9,18 +9,38 @@ import "./Home.css";
 export interface HomeProps {}
 
 export const Home: React.FC<HomeProps> = () => {
+  const [search, setSearch] = React.useState<string>("");
+  const [region, setRegion] = React.useState<string>("");
+
   const data = useLoaderData() as Country[];
 
+  const handleCountrySearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+  };
+
+  const handleRegionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setRegion(e.target.value);
+  };
+
+  const filteredData = data.filter((country) => {
+    if (region === "") {
+      return country.name.toLowerCase().includes(search.toLowerCase());
+    } else {
+      return country.name.toLowerCase().includes(search.toLowerCase()) && country.region === region;
+    }
+  });
+
   return (
-    <div className="container">
+    <div>
       <form className="form">
-        <SearchInput />
-        <Select />
+        <SearchInput value={search} onChange={handleCountrySearch} />
+        <Select value={region} onChange={handleRegionChange} />
       </form>
       <div className="cards">
-        {data.map((country) => (
+        {filteredData.map((country) => (
           <MainCard key={country.name} country={country} />
         ))}
+        {filteredData.length === 0 && <div className="no-results">No results found</div>}
       </div>
     </div>
   );

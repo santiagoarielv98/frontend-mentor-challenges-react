@@ -1,14 +1,18 @@
 import React from "react";
 import "./Select.css";
 
-interface SelectProps {}
+interface SelectProps {
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+}
 
-const Select: React.FC<SelectProps> = () => {
+const Select: React.FC<SelectProps> = ({ value, onChange }) => {
   return (
-    <select className="select">
+    <select className="select" value={value} onChange={onChange}>
       <option value="" hidden>
         Filter by Region
       </option>
+      <option value="">All</option>
       <option value="Africa">Africa</option>
       <option value="America">America</option>
       <option value="Asia">Asia</option>

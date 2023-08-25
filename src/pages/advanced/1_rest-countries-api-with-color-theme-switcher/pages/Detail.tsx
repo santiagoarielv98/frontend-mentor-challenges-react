@@ -1,12 +1,13 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
+import { Country } from "../types/countries";
 
 export interface DetailProps {}
 
 export const Detail: React.FC<DetailProps> = () => {
-  const { name } = useParams();
+  const data = useLoaderData() as Country | undefined;
 
-  return <div>{name}</div>;
+  return <div>{data?.name}</div>;
 };
 
 export default Detail;
