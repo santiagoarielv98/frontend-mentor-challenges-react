@@ -13,7 +13,7 @@ export const Detail: React.FC<DetailProps> = () => {
   const country = useLoaderData() as Country | undefined;
 
   if (!country?.name) {
-    return "null";
+    return null;
   }
 
   return (

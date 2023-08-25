@@ -5,6 +5,7 @@ import MainCard from "../components/card/MainCard";
 import SearchInput from "../components/inputs/SearchInput";
 import Select from "../components/inputs/Select";
 import "./Home.css";
+import useObserver from "../hooks/useObserver";
 
 export interface HomeProps {}
 
@@ -13,6 +14,8 @@ export const Home: React.FC<HomeProps> = () => {
   const [region, setRegion] = React.useState<string>("");
 
   const data = useLoaderData() as Country[];
+
+  const [observer, setElements, entries] = useObserver();
 
   const handleCountrySearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
@@ -29,6 +32,19 @@ export const Home: React.FC<HomeProps> = () => {
       return country.name.toLowerCase().includes(search.toLowerCase()) && country.region === region;
     }
   });
+
+  React.useEffect(() => {
+    const cards = document.querySelectorAll(".card");
+    setElements(cards);
+  }, [setElements]);
+
+  React.useEffect(() => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        observer.unobserve(entry.target);
+      }
+    });
+  }, [entries, observer]);
 
   return (
     <div className="home__container">
