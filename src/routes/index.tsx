@@ -1,12 +1,11 @@
-import { Outlet, createBrowserRouter } from "react-router-dom";
-import advancedRoutes from "../pages/advanced";
+import { createBrowserRouter } from 'react-router-dom'
+import { advancedRoutes } from '../pages/advanced/routes'
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Outlet />,
-    children: [...advancedRoutes],
-  },
-]);
+    path: '/',
+    children: [advancedRoutes]
+  }
+])
 
-export default router;
+export default router
