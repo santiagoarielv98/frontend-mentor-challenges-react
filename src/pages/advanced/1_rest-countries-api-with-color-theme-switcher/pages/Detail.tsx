@@ -56,20 +56,20 @@ export const Detail: React.FC<DetailProps> = () => {
                 <strong>Top Level Domain:</strong> {country.topLevelDomain}
               </p>
               <p>
-                <strong>Currencies:</strong> {country.currencies.map((currency) => currency.name).join(", ")}
+                <strong>Currencies:</strong> {country.currencies?.map((currency) => currency.name).join(", ")}
               </p>
               <p>
-                <strong>Languages:</strong> {country.languages.map((language) => language.name).join(", ")}
+                <strong>Languages:</strong> {country.languages?.map((language) => language.name).join(", ")}
               </p>
             </div>
           </div>
           <div className="detail__card__content__border">
             <strong>Border Countries:</strong>
             <div className="detail__card__content__border__container">
-              {country.borders.map((border) => (
+              {country.borders?.map((border) => (
                 <button key={border}>{border}</button>
               ))}
-              {country.borders.length === 0 && <span>None</span>}
+              {!country.borders?.length && <span>None</span>}
             </div>
           </div>
         </div>

@@ -1,10 +1,11 @@
 import type { RouteObject } from "react-router-dom";
+import { Country } from "./types/countries";
 
 export const path = "rest-countries-api-with-color-theme-switcher";
 
 const loader = async () => {
   const data = await import("./data.json");
-  return data.default;
+  return data.default as unknown as Country[];
 };
 
 const routes: RouteObject = {
@@ -29,7 +30,7 @@ const routes: RouteObject = {
       },
       async loader({ params }) {
         const data = await loader();
-        return data.find((country: { name: string }) => country.name === params.name);
+        return data.find((country) => country.name === params.name);
       },
     },
   ],
