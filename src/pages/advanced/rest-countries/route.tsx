@@ -1,6 +1,6 @@
 import type { RouteObject } from 'react-router-dom'
 
-const restCountriesPath = 'rest-countries'
+export const restCountriesPath = 'rest-countries'
 
 const restCountriesRoute: RouteObject = {
   path: restCountriesPath,
