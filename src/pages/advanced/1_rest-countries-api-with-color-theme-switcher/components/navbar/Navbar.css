@@ -1,7 +1,13 @@
 nav {
   padding: 1.5rem;
   background: rgba(0, 0, 0, 0.5);
-  background-color: var(--color-background);
+  background-color: var(--color-elements);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
 }
 nav > div {
   max-width: 1280px;
@@ -24,6 +30,7 @@ nav > div > h1 {
   border: none;
   color: var(--color-text);
   font-size: 16px;
+  cursor: pointer;
 }
 .theme-switcher > svg {
   margin-right: 0.5rem;

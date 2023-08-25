@@ -9,14 +9,14 @@ export const Layout = () => {
   return (
     <div>
       <Navbar />
-      <img
+      {/* <img
         src={bg}
         style={{
           position: "fixed",
           inset: 0,
           zIndex: -1,
         }}
-      />
+      /> */}
       <Outlet />
     </div>
   );
