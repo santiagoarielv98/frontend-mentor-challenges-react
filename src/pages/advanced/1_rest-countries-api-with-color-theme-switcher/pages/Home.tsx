@@ -31,7 +31,7 @@ export const Home: React.FC<HomeProps> = () => {
   });
 
   return (
-    <div>
+    <div className="home__container">
       <form className="form">
         <SearchInput value={search} onChange={handleCountrySearch} />
         <Select value={region} onChange={handleRegionChange} />
