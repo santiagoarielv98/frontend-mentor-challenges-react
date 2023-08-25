@@ -6,6 +6,11 @@
   border-radius: 0.5rem;
   background-color: var(--color-elements);
   box-shadow: var(--shadow);
+  max-width: 16.5rem;
+  cursor: pointer;
+}
+.card:hover {
+  box-shadow: var(--shadow-hover);
 }
 
 .card > img {

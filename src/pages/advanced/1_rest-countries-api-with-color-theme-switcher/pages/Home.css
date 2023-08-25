@@ -1,0 +1,19 @@
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  margin-top: 5rem;
+  padding: 3rem 0;
+}
+
+.form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4.625rem;
+  padding: 3rem 0;
+  justify-content: center;
+}
