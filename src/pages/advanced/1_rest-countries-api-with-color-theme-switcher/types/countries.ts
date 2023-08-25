@@ -1,54 +1,35 @@
+export enum Region {
+  Africa = "Africa",
+  Europe = "Europe",
+  Oceania = "Oceania",
+  Americas = "Americas",
+  Asia = "Asia",
+  Antarctic = "Antarctic",
+}
+
+export interface Currency {
+  code: string;
+  name: string;
+  symbol: string;
+}
+
+export interface Language {
+  iso639_1: string;
+  iso639_2: string;
+  name: string;
+  nativeName: string;
+}
+
 export interface Country {
   name: string;
-  topLevelDomain: string[];
-  alpha2Code: string;
-  alpha3Code: string;
-  callingCodes: string[];
-  capital: string;
-  altSpellings: string[];
-  subregion: string;
-  region: string;
   population: number;
-  latlng: number[];
-  demonym: string;
-  area: number;
-  timezones: string[];
-  borders: string[];
+  region: Region;
+  capital: string;
   nativeName: string;
-  numericCode: string;
-  flags: {
-    svg: string;
-    png: string;
-  };
-  currencies: {
-    code: string;
-    name: string;
-    symbol: string;
-  }[];
-  languages: {
-    iso639_1: string;
-    iso639_2: string;
-    name: string;
-    nativeName: string;
-  }[];
-  translations: {
-    br: string;
-    pt: string;
-    nl: string;
-    hr: string;
-    fa: string;
-    de: string;
-    es: string;
-    fr: string;
-    ja: string;
-    it: string;
-    hu: string;
-  };
+  subregion: string;
+  borders: string[];
+  topLevelDomain: string[];
+  currencies: Currency[];
   flag: string;
-  regionalBlocs: {
-    acronym: string;
-    name: string;
-  }[];
-  cioc: string;
-  independent: boolean;
+  languages: Language[];
 }

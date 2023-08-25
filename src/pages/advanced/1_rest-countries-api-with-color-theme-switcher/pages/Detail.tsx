@@ -4,7 +4,7 @@ import { Country } from "../types/countries";
 
 import "./Detail.css";
 import ArrowLeftIcon from "../components/icons/ArrowLeftIcon";
-import { path } from "..";
+import { restCountriespath } from "..";
 
 export interface DetailProps {}
 
@@ -22,7 +22,7 @@ export const Detail: React.FC<DetailProps> = () => {
         <button
           className="btn"
           onClick={() => {
-            navigate(`/advanced/${path}`);
+            navigate(`/advanced/${restCountriespath}`);
           }}
         >
           <ArrowLeftIcon width={18} height={18} />
