@@ -4,11 +4,11 @@ import "./SearchInput.css";
 
 interface SearchInputProps {}
 
-const SearchInput: React.FC<SearchInputProps> = (props) => {
+const SearchInput: React.FC<SearchInputProps> = () => {
   return (
-    <div className="search">
+    <div className="search-input">
       <SearchIcon width={20} height={20} />
-      <input type="text" placeholder="Search for a country..." />
+      <input className="search-input__input" type="text" placeholder="Search for a country..." />
     </div>
   );
 };

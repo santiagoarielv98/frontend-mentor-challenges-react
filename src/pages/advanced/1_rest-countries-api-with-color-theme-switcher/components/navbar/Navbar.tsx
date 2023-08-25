@@ -39,24 +39,22 @@ const Navbar = () => {
   }, [theme]);
 
   return (
-    <header>
-      <nav>
-        <div>
-          <h1>Where in the world?</h1>
-          <button className="theme-switcher" type="button" onClick={toggleTheme}>
-            {theme === Theme.Light ? (
-              <>
-                <MoonIcon />
-                <span>Dark Mode</span>
-              </>
-            ) : (
-              <>
-                <SunIcon />
-                <span>Light Mode</span>
-              </>
-            )}
-          </button>
-        </div>
+    <header className="navbar">
+      <nav className="navbar__container">
+        <h1>Where in the world?</h1>
+        <button className="navbar__button" type="button" onClick={toggleTheme}>
+          {theme === Theme.Light ? (
+            <>
+              <MoonIcon />
+              <span>Dark Mode</span>
+            </>
+          ) : (
+            <>
+              <SunIcon />
+              <span>Light Mode</span>
+            </>
+          )}
+        </button>
       </nav>
     </header>
   );

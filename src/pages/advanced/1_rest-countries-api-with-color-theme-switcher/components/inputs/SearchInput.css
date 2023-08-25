@@ -1,4 +1,4 @@
-.search {
+.search-input {
   padding: 1.125rem 1.875rem;
   display: flex;
   align-items: center;
@@ -7,13 +7,17 @@
   border-radius: 0.5rem;
   gap: 1.5rem;
   background-color: var(--color-elements);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow);
+  color: var(--color-input);
 }
 
-.search > input {
-  border: none;
-  outline: none;
-  color: var(--text-color);
+.search-input__input {
   background-color: transparent;
   width: 100%;
+  color: var(--color-text);
+  font-weight: var(--font-weight-regular);
+}
+
+.search-input__input::placeholder {
+  color: var(--color-input);
 }

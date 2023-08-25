@@ -3,9 +3,9 @@ import "./Select.css";
 
 interface SelectProps {}
 
-const Select: React.FC<SelectProps> = (props) => {
+const Select: React.FC<SelectProps> = () => {
   return (
-    <select>
+    <select className="select">
       <option value="" hidden>
         Filter by Region
       </option>

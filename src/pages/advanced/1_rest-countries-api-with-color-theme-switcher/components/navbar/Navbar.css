@@ -1,29 +1,26 @@
-nav {
-  padding: 1.5rem;
-  background: rgba(0, 0, 0, 0.5);
-  background-color: var(--color-elements);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.navbar {
+  background: var(--color-elements);
+  box-shadow: var(--shadow);
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 100;
 }
-nav > div {
+.navbar__container {
+  padding: 1.5rem;
   max-width: 1280px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
 }
-nav > div > h1 {
+.navbar__container > h1 {
   font-weight: var(--font-weight-bold);
-
   line-height: 1.4;
   font-size: 22px;
   letter-spacing: 0.04em;
 }
-
-.theme-switcher {
+.navbar__button {
   display: flex;
   align-items: center;
   background: transparent;
@@ -32,7 +29,7 @@ nav > div > h1 {
   font-size: 16px;
   cursor: pointer;
 }
-.theme-switcher > svg {
+.navbar__button > svg {
   margin-right: 0.5rem;
   width: 20px;
   height: 20px;
