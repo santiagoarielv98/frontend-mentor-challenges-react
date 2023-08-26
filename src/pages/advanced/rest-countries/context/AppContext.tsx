@@ -57,6 +57,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
   }, [countries])
 
+  React.useEffect(() => {
+    document.documentElement.classList.toggle(Theme.Dark, theme === Theme.Dark)
+  }, [theme])
+
   const value = React.useMemo(
     () => ({
       toggleTheme,
