@@ -36,7 +36,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   }, [])
 
   React.useEffect(() => {
-    if (countryName === undefined || countryName !== country?.name.common) {
+    if (countryName !== undefined && countryName !== country?.name.common) {
       const country = countries.find((country) => country.name.common === countryName) ?? null
       setCountry(country)
       localStorage.setItem('country', JSON.stringify(country))

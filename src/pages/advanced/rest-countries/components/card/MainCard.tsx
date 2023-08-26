@@ -9,7 +9,7 @@ const MainCard: React.FC<MainCardProps> = ({ country }) => {
 
   return (
     <div>
-      <img src={flags.svg} alt={flags.alt} width={300} />
+      <img src={flags.svg} alt={flags.alt} width={300} height={200} loading="lazy" />
       <h2>{name.common}</h2>
       <p>Population: {population}</p>
       <p>Region: {region}</p>
