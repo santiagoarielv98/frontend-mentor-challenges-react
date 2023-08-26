@@ -21,7 +21,7 @@ const restCountriesRoute: RouteObject = {
       }
     },
     {
-      path: ':name',
+      path: ':countryName',
       lazy: async () => {
         const { default: Detail } = await import('./pages/Detail/Detail')
         return {
