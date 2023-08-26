@@ -1,5 +1,6 @@
 import React from 'react'
 import useAppContext from '../../hooks/useAppContext'
+import MainHero from '../../components/hero/MainHero'
 
 const Detail: React.FC = () => {
   const { country } = useAppContext()
@@ -8,7 +9,11 @@ const Detail: React.FC = () => {
     return <div>Country not found</div>
   }
 
-  return <div>{country.name.common}</div>
+  return (
+    <div>
+      <MainHero country={country} />
+    </div>
+  )
 }
 
 export default Detail

@@ -7,7 +7,6 @@ const Layout: React.FC = () => {
     <AppProvider>
       <Navbar />
       <div>
-        <h1>Layout</h1>
         <Outlet />
       </div>
     </AppProvider>
