@@ -5,8 +5,14 @@ import Navbar from '../../components/navbar/Navbar'
 const Layout: React.FC = () => {
   return (
     <AppProvider>
-      <Navbar />
-      <div>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          minHeight: '100vh'
+        }}
+      >
+        <Navbar />
         <Outlet />
       </div>
     </AppProvider>
