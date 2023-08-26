@@ -9,8 +9,8 @@ export const useCountry = (): any => {
 
   React.useEffect(() => {
     const country = countries.find((country) => country.name.common === name)
-    setCountry(country)
+    setCountry(country ?? null)
   }, [countries, name])
 
-  return { country }
+  return country
 }

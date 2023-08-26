@@ -1,5 +1,6 @@
 import React from 'react'
 import useAppContext from '../../hooks/useAppContext'
+import { Link } from 'react-router-dom'
 
 const Home: React.FC = () => {
   const { countries } = useAppContext()
@@ -9,7 +10,9 @@ const Home: React.FC = () => {
       <h1>Home</h1>
       <div>
         {countries.map((country) => (
-          <div key={country.name.common}>{country.name.common}</div>
+          <Link to={country.name.common} key={country.name.common}>
+            {country.name.common}
+          </Link>
         ))}
       </div>
     </div>
