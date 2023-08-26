@@ -1,4 +1,5 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
 
 interface Country {
   name: {
@@ -12,6 +13,7 @@ enum Theme {
 }
 
 export interface AppContextProps {
+  country: Country | null
   theme: Theme
   countries: Country[]
   toggleTheme?: () => void
@@ -19,7 +21,8 @@ export interface AppContextProps {
 
 export const AppContext = React.createContext<AppContextProps>({
   theme: Theme.Light,
-  countries: []
+  countries: [],
+  country: null
 })
 
 const initialTheme = (): Theme => {
@@ -32,6 +35,12 @@ const initialTheme = (): Theme => {
   }
 }
 
+const initialCountry = (): Country | null => {
+  const data = localStorage.getItem('country')
+  const parsedData = JSON.parse(data ?? 'null')
+  return parsedData
+}
+
 const initialCountries = (): Country[] => {
   const data = localStorage.getItem('countries')
   const parsedData = JSON.parse(data ?? '[]')
@@ -41,6 +50,9 @@ const initialCountries = (): Country[] => {
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [countries, setCountries] = React.useState<Country[]>(initialCountries)
   const [theme, setTheme] = React.useState<Theme>(initialTheme)
+  const [country, setCountry] = React.useState<Country | null>(initialCountry)
+
+  const { name } = useParams<{ name: string }>()
 
   const toggleTheme = React.useCallback((): void => {
     setTheme((prevTheme) => {
@@ -49,6 +61,14 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       return newTheme
     })
   }, [])
+
+  React.useEffect(() => {
+    if (name === undefined || name !== country?.name.common) {
+      const country = countries.find((country) => country.name.common === name)
+      setCountry(country ?? null)
+      localStorage.setItem('country', JSON.stringify(country ?? null))
+    }
+  }, [name, country, countries])
 
   React.useEffect(() => {
     if (countries.length === 0) {
@@ -68,9 +88,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     () => ({
       toggleTheme,
       theme,
-      countries
+      countries,
+      country
     }),
-    [toggleTheme, theme, countries]
+    [toggleTheme, theme, countries, country]
   )
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>

@@ -1,8 +1,8 @@
 import React from 'react'
-import { useCountry } from '../../hooks/useCountry'
+import useAppContext from '../../hooks/useAppContext'
 
 const Detail: React.FC = () => {
-  const country = useCountry()
+  const { country } = useAppContext()
 
   if (country === null) {
     return <div>Country not found</div>
