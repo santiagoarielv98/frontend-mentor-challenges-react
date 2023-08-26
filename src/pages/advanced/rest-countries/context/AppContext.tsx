@@ -42,13 +42,13 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [countries, setCountries] = React.useState<Country[]>(initialCountries)
   const [theme, setTheme] = React.useState<Theme>(initialTheme)
 
-  const toggleTheme = (): void => {
+  const toggleTheme = React.useCallback((): void => {
     setTheme((prevTheme) => {
       const newTheme = prevTheme === Theme.Light ? Theme.Dark : Theme.Light
       localStorage.theme = newTheme
       return newTheme
     })
-  }
+  }, [])
 
   React.useEffect(() => {
     if (countries.length === 0) {
@@ -64,15 +64,14 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
   }, [])
 
-  return (
-    <AppContext.Provider
-      value={{
-        toggleTheme,
-        theme,
-        countries
-      }}
-    >
-      {children}
-    </AppContext.Provider>
+  const value = React.useMemo(
+    () => ({
+      toggleTheme,
+      theme,
+      countries
+    }),
+    [toggleTheme, theme, countries]
   )
+
+  return <AppContext.Provider value={value}>{children}</AppContext.Provider>
 }
