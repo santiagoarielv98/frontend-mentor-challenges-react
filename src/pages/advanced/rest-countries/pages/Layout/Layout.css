@@ -20,3 +20,16 @@ body {
   line-height: var(--line-height);
   min-height: 100vh;
 }
+
+b {
+  color: rgb(138, 43, 226);
+}
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+  padding-top: 4rem;
+  /* padding: 0 1rem;
+  max-width: 1440px;
+  margin: 0 auto; */
+}

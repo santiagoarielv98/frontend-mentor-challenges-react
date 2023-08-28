@@ -7,14 +7,8 @@ import './Layout.css'
 const Layout: React.FC = () => {
   return (
     <AppProvider>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          minHeight: '100vh'
-        }}
-      >
-        <Navbar />
+      <Navbar />
+      <div className="layout">
         <Outlet />
       </div>
     </AppProvider>

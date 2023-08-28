@@ -6,6 +6,8 @@ import MainCard from '../../components/card/MainCard'
 import AutoSizer from 'react-virtualized-auto-sizer'
 import { FixedSizeGrid as Grid } from 'react-window'
 
+import './Home.css'
+
 const Home: React.FC = () => {
   const { countries } = useAppContext()
   const [search, setSearch] = React.useState<string>('')
@@ -20,38 +22,7 @@ const Home: React.FC = () => {
   }, [countries, region, search])
 
   return (
-    <div
-      style={{
-        flex: 1,
-        padding: '1px',
-        display: 'flex',
-        flexDirection: 'column'
-      }}
-    >
-      <form>
-        <input
-          onChange={(event) => {
-            setSearch(event.target.value)
-          }}
-          type="text"
-          placeholder="Search for a country..."
-        />
-        <select
-          onChange={(event) => {
-            setRegion(event.target.value)
-          }}
-        >
-          <option hidden value="">
-            Filter by Region
-          </option>
-          <option value="">All</option>
-          <option value="africa">Africa</option>
-          <option value="americas">Americas</option>
-          <option value="asia">Asia</option>
-          <option value="europe">Europe</option>
-          <option value="oceania">Oceania</option>
-        </select>
-      </form>
+    <div className="home">
       <div
         style={{
           flex: 1
@@ -85,6 +56,30 @@ const Home: React.FC = () => {
           )}
         </AutoSizer>
       </div>
+      <form>
+        <input
+          onChange={(event) => {
+            setSearch(event.target.value)
+          }}
+          type="text"
+          placeholder="Search for a country..."
+        />
+        <select
+          onChange={(event) => {
+            setRegion(event.target.value)
+          }}
+        >
+          <option hidden value="">
+            Filter by Region
+          </option>
+          <option value="">All</option>
+          <option value="africa">Africa</option>
+          <option value="americas">Americas</option>
+          <option value="asia">Asia</option>
+          <option value="europe">Europe</option>
+          <option value="oceania">Oceania</option>
+        </select>
+      </form>
     </div>
   )
 }
