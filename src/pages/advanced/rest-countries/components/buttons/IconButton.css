@@ -1,0 +1,13 @@
+.icon-button {
+  padding: 0.25rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+}
+.icon-button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
