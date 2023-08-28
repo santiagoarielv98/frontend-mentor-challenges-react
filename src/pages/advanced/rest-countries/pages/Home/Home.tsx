@@ -1,10 +1,7 @@
 import React from 'react'
-import useAppContext from '../../hooks/useAppContext'
 import { Link } from 'react-router-dom'
 import MainCard from '../../components/card/MainCard'
-
-import AutoSizer from 'react-virtualized-auto-sizer'
-import { FixedSizeGrid as Grid } from 'react-window'
+import useAppContext from '../../hooks/useAppContext'
 
 import './Home.css'
 
@@ -13,58 +10,19 @@ const Home: React.FC = () => {
   const [search, setSearch] = React.useState<string>('')
   const [region, setRegion] = React.useState<string>('')
 
-  const filteredCountries = React.useMemo(() => {
-    return countries.filter((country) => {
-      const countryName = country.name.common.toLowerCase()
-      const countryRegion = country.region.toLowerCase()
-      return countryName.includes(search.toLowerCase()) && countryRegion.includes(region.toLowerCase())
-    })
-  }, [countries, region, search])
-
   return (
     <div className="home">
-      <div
-        style={{
-          flex: 1
-        }}
-      >
-        <AutoSizer>
-          {({ height, width }) => (
-            <Grid
-              height={height}
-              width={width}
-              columnCount={4}
-              columnWidth={350}
-              rowCount={Math.ceil(filteredCountries.length / 4)}
-              rowHeight={500}
-            >
-              {({ columnIndex, rowIndex, style }) => {
-                const index = rowIndex * 4 + columnIndex
-                const country = filteredCountries[index]
-
-                return (
-                  <div style={style}>
-                    {country !== undefined && (
-                      <Link to={country.name.common} key={country.name.common}>
-                        <MainCard country={country} />
-                      </Link>
-                    )}
-                  </div>
-                )
-              }}
-            </Grid>
-          )}
-        </AutoSizer>
-      </div>
       <form>
         <input
+          type="text"
+          placeholder="Search for a country..."
+          value={search}
           onChange={(event) => {
             setSearch(event.target.value)
           }}
-          type="text"
-          placeholder="Search for a country..."
         />
         <select
+          value={region}
           onChange={(event) => {
             setRegion(event.target.value)
           }}
@@ -73,13 +31,27 @@ const Home: React.FC = () => {
             Filter by Region
           </option>
           <option value="">All</option>
-          <option value="africa">Africa</option>
-          <option value="americas">Americas</option>
-          <option value="asia">Asia</option>
-          <option value="europe">Europe</option>
-          <option value="oceania">Oceania</option>
+          <option value="Africa">Africa</option>
+          <option value="Americas">Americas</option>
+          <option value="Asia">Asia</option>
+          <option value="Europe">Europe</option>
+          <option value="Oceania">Oceania</option>
         </select>
       </form>
+
+      <div
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: '2rem'
+        }}
+      >
+        {countries.slice(0, 20).map((country) => (
+          <Link key={country.name.common} to={country.name.common}>
+            <MainCard country={country} />
+          </Link>
+        ))}
+      </div>
     </div>
   )
 }

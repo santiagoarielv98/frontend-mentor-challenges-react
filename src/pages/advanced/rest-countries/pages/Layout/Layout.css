@@ -29,7 +29,6 @@ b {
   display: flex;
   min-height: 100vh;
   padding-top: 4rem;
-  /* padding: 0 1rem;
   max-width: 1440px;
-  margin: 0 auto; */
+  margin: 0 auto;
 }
