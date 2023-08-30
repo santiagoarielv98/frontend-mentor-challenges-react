@@ -8,9 +8,11 @@ const Layout: React.FC = () => {
   return (
     <AppProvider>
       <Navbar />
-      <div className="layout">
-        <Outlet />
-      </div>
+      <main className="px-7 pt-20">
+        <div className="max-w-7xl mx-auto py-12">
+          <Outlet />
+        </div>
+      </main>
     </AppProvider>
   )
 }
