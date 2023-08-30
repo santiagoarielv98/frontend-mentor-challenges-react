@@ -17,7 +17,7 @@ const Navbar: React.FC = () => {
         <Link to="#" className="navbar__logo">
           <GlobeAmericas width="48" height="48" />
           <span>
-            SV <b>~</b> Countries
+            SV <b className="accent">~</b> Countries
           </span>
         </Link>
         <IconButton onClick={toggleTheme}>{theme === 'light' ? <MoonIcon /> : <SunIcon />}</IconButton>
