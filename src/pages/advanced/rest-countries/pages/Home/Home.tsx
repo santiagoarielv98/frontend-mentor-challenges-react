@@ -3,50 +3,30 @@ import { Link } from 'react-router-dom'
 import MainCard from '../../components/card/MainCard'
 import useAppContext from '../../hooks/useAppContext'
 
-import './Home.css'
+import Select from '../../components/inputs/Select'
+import Search from '../../components/inputs/Search'
 
 const Home: React.FC = () => {
   const { countries } = useAppContext()
   const [search, setSearch] = React.useState<string>('')
   const [region, setRegion] = React.useState<string>('')
 
-  return (
-    <div className="home">
-      <form>
-        <input
-          type="text"
-          placeholder="Search for a country..."
-          value={search}
-          onChange={(event) => {
-            setSearch(event.target.value)
-          }}
-        />
-        <select
-          value={region}
-          onChange={(event) => {
-            setRegion(event.target.value)
-          }}
-        >
-          <option hidden value="">
-            Filter by Region
-          </option>
-          <option value="">All</option>
-          <option value="Africa">Africa</option>
-          <option value="Americas">Americas</option>
-          <option value="Asia">Asia</option>
-          <option value="Europe">Europe</option>
-          <option value="Oceania">Oceania</option>
-        </select>
-      </form>
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setSearch(e.target.value)
+  }
 
-      <div
-        style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: '2rem'
-        }}
-      >
-        {countries.slice(0, 20).map((country) => (
+  const handleRegion = (e: React.ChangeEvent<HTMLSelectElement>): void => {
+    setRegion(e.target.value)
+  }
+
+  return (
+    <div>
+      <form className="flex justify-between gap-4 flex-wrap">
+        <Search value={search} onChange={handleSearch} />
+        <Select value={region} onChange={handleRegion} />
+      </form>
+      <div className="mt-12 grid gap-[4.625rem] grid-cols-[repeat(auto-fit,_minmax(16.5rem,_1fr))]">
+        {countries.map((country) => (
           <Link key={country.name.common} to={country.name.common}>
             <MainCard country={country} />
           </Link>
