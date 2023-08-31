@@ -1,10 +1,11 @@
 import React from 'react'
+
 import { useParams } from 'react-router-dom'
 
-export enum Theme {
-  Light = 'light',
-  Dark = 'dark'
-}
+import { initialCountries, initialCountry, initialTheme } from '../utils'
+
+import { Theme } from '../constants/app'
+import { type Country } from '../types/api'
 
 export interface AppContextProps {
   country: Country | null
@@ -44,18 +45,16 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   }, [countryName, country, countries])
 
   React.useEffect(() => {
-    if (countries.length === 0) {
-      fetch('https://restcountries.com/v3.1/all')
-        .then(async (response) => await response.json())
-        .then((data) => {
-          localStorage.setItem('countries', JSON.stringify(data))
-          setCountries(data)
-        })
-        .catch((error) => {
-          console.error(error)
-        })
-    }
-  }, [countries])
+    fetch('https://restcountries.com/v3.1/all')
+      .then(async (response) => await response.json())
+      .then((data) => {
+        localStorage.setItem('countries', JSON.stringify(data))
+        setCountries(data)
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+  }, [])
 
   React.useEffect(() => {
     document.documentElement.classList.toggle(Theme.Dark, theme === Theme.Dark)
@@ -72,26 +71,4 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   )
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>
-}
-
-const initialTheme = (): Theme => {
-  const isDark = localStorage.theme === Theme.Dark
-  const matches = !('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches
-  if (isDark || matches) {
-    return Theme.Dark
-  } else {
-    return Theme.Light
-  }
-}
-
-const initialCountry = (): Country | null => {
-  const data = localStorage.getItem('country')
-  const parsedData = JSON.parse(data ?? 'null')
-  return parsedData
-}
-
-const initialCountries = (): Country[] => {
-  const data = localStorage.getItem('countries')
-  const parsedData = JSON.parse(data ?? '[]')
-  return Array.isArray(parsedData) ? parsedData : []
 }

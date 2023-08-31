@@ -1,4 +1,4 @@
-interface Country {
+export interface Country {
   name: {
     common: string
     nativeName: Record<string, CountryName>
@@ -17,12 +17,12 @@ interface Country {
   tld: string[]
 }
 
-interface CountryName {
+export interface CountryName {
   common: string
   official: string
 }
 
-interface CurrencyName {
+export interface CurrencyName {
   name: string
   symbol: string
 }

@@ -1,22 +1,22 @@
 import React from 'react'
 
+import { type Country } from '../../types/api'
+
 interface MainDetailProps {
   country: Country
 }
 
 const MainHero: React.FC<MainDetailProps> = ({ country }) => {
   const nativeName = Object.values(country.name.nativeName)[0].common ?? 'N/A'
-
   const languages = Object.values(country.languages).join(', ')
-
   const currencies = Object.values(country.currencies)
     .map((currency) => currency.name)
     .join(', ')
 
   return (
-    <div className="mt-12 flex justify-between gap-12 flex-wrap max-lg:flex-col">
+    <div className="flex justify-between gap-12 flex-wrap max-lg:flex-col">
       <div className="flex-1 max-w-[35rem] mx-auto">
-        <img src={country.flags.svg} alt={country.flags.alt} className="aspect-[7/5] w-full" />
+        <img width={560} height={400} src={country.flags.svg} alt={country.flags.alt} className="aspect-[7/5] w-full" />
       </div>
       <div className="flex-1 max-w-[37.5rem] mx-auto w-full">
         <div className="flex flex-col justify-center gap-8 h-full w-full">
