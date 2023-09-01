@@ -21,6 +21,18 @@ const Home: React.FC = () => {
     setRegion(e.target.value)
   }
 
+  const filterByRegion = (country: { region: string }): boolean => {
+    if (region === '') return true
+    return country.region === region
+  }
+
+  const filterByName = (country: { name: { common: string } }): boolean => {
+    if (search === '') return true
+    return country.name.common.toLowerCase().includes(search.toLowerCase())
+  }
+
+  const filteredCountries = countries.filter(filterByRegion).filter(filterByName)
+
   return (
     <div>
       <form className="flex justify-between gap-4 flex-wrap">
@@ -31,14 +43,14 @@ const Home: React.FC = () => {
           </Option>
           <Option value="">All</Option>
           <Option value="Africa">Africa</Option>
-          <Option value="America">America</Option>
+          <Option value="Americas">America</Option>
           <Option value="Asia">Asia</Option>
           <Option value="Europe">Europe</Option>
           <Option value="Oceania">Oceania</Option>
         </Select>
       </form>
       <div className="mt-12 grid gap-[4.625rem] grid-cols-[repeat(auto-fit,_minmax(16.5rem,_1fr))]">
-        {countries.slice(0, 10).map((country) => (
+        {filteredCountries.slice(0, 20).map((country) => (
           <Link key={country.name.common} to={country.name.common} className="rounded-md mx-auto">
             <MainCard country={country} />
           </Link>

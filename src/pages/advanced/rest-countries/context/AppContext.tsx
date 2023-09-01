@@ -45,16 +45,18 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   }, [countryName, country, countries])
 
   React.useEffect(() => {
-    fetch('https://restcountries.com/v3.1/all')
-      .then(async (response) => await response.json())
-      .then((data) => {
-        localStorage.setItem('countries', JSON.stringify(data))
-        setCountries(data)
-      })
-      .catch((error) => {
-        console.error(error)
-      })
-  }, [])
+    if (countries.length === 0) {
+      fetch('https://restcountries.com/v3.1/all')
+        .then(async (response) => await response.json())
+        .then((data) => {
+          localStorage.setItem('countries', JSON.stringify(data))
+          setCountries(data)
+        })
+        .catch((error) => {
+          console.error(error)
+        })
+    }
+  }, [countries])
 
   React.useEffect(() => {
     document.documentElement.classList.toggle(Theme.Dark, theme === Theme.Dark)
