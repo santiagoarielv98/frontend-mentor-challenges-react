@@ -12,6 +12,9 @@ const Home: React.FC = () => {
   const { countries } = useAppContext()
   const [search, setSearch] = React.useState<string>('')
   const [region, setRegion] = React.useState<string>('')
+  const filteredCountries = countries
+    .filter((c) => c.region.includes(region))
+    .filter((c) => c.name.common.toLowerCase().includes(search.toLowerCase()))
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setSearch(e.target.value)
@@ -20,18 +23,6 @@ const Home: React.FC = () => {
   const handleRegion = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setRegion(e.target.value)
   }
-
-  const filterByRegion = (country: { region: string }): boolean => {
-    if (region === '') return true
-    return country.region === region
-  }
-
-  const filterByName = (country: { name: { common: string } }): boolean => {
-    if (search === '') return true
-    return country.name.common.toLowerCase().includes(search.toLowerCase())
-  }
-
-  const filteredCountries = countries.filter(filterByRegion).filter(filterByName)
 
   return (
     <div>
