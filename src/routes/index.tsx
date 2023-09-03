@@ -21,7 +21,7 @@ const router = createBrowserRouter(
     }
   ],
   {
-    basename: import.meta.env.DEV ? '/' : '/frontend-mentor-challenges-react/'
+    basename: import.meta.env.BASE_URL
   }
 )
 
