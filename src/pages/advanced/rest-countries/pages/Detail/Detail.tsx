@@ -1,13 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import useAppContext from '../../hooks/useAppContext'
-
 import MainHero from '../../components/hero/MainHero'
 import ArrowLeft from '../../components/icons/ArrowLeft'
+import useCountry from '../../hooks/useCountry'
 
 const Detail: React.FC = () => {
-  const { country } = useAppContext()
+  const country = useCountry()
 
   const countryDetail = country !== null ? <MainHero country={country} /> : <h1>Loading...</h1>
 

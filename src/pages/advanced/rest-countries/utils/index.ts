@@ -7,12 +7,6 @@ export const initialTheme = (): Theme => {
   return isDark || matches ? Theme.Dark : Theme.Light
 }
 
-export const initialCountry = (): Country | null => {
-  const data = localStorage.getItem('country')
-  const parsedData = JSON.parse(data ?? 'null')
-  return parsedData
-}
-
 export const initialCountries = (): Country[] => {
   const data = localStorage.getItem('countries')
   const parsedData = JSON.parse(data ?? '[]')

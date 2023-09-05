@@ -1,28 +1,23 @@
-import { Navigate, createBrowserRouter } from 'react-router-dom'
-import { advancedPath, advancedRoutes } from '../pages/advanced/routes'
+import { Navigate, createHashRouter } from 'react-router-dom'
 import { restCountriesPath } from '../pages/advanced/rest-countries/route'
+import { advancedPath, advancedRoutes } from '../pages/advanced/routes'
 
 const defaultPath = `${advancedPath}/${restCountriesPath}`
 
-const router = createBrowserRouter(
-  [
-    {
-      path: '/',
-      children: [advancedRoutes]
-    },
-    {
-      path: '*',
-      children: [
-        {
-          index: true,
-          element: <Navigate to={defaultPath} replace={true} />
-        }
-      ]
-    }
-  ],
+const router = createHashRouter([
   {
-    basename: import.meta.env.BASE_URL
+    path: '/',
+    children: [advancedRoutes]
+  },
+  {
+    path: '*',
+    children: [
+      {
+        index: true,
+        element: <Navigate to={defaultPath} replace={true} />
+      }
+    ]
   }
-)
+])
 
 export default router

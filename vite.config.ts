@@ -3,6 +3,6 @@ import react from '@vitejs/plugin-react-swc'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/frontend-mentor-challenges-react/',
+  base: process.env.NODE_ENV === 'production' ? '/frontend-mentor-challenges-react/' : '/',
   plugins: [react()]
 })
