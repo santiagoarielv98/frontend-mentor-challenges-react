@@ -18,7 +18,7 @@ const Navbar: React.FC = () => {
           <GlobeAmericas width={30} height={30} />
           <h1 className="text-2xl font-semibold leading-tight">SV ~ Countries</h1>
         </Link>
-        <IconButton onClick={toggleTheme}>
+        <IconButton onClick={toggleTheme} aria-label="Toggle theme">
           {theme === 'light' ? <MoonIcon className="w-5 h-5" /> : <SunIcon className="w-5 h-5" />}
         </IconButton>
       </div>

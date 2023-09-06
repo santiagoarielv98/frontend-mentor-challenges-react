@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import useCountry from '../../hooks/useCountry'
+
 import MainHero from '../../components/hero/MainHero'
 import ArrowLeft from '../../components/icons/ArrowLeft'
-import useCountry from '../../hooks/useCountry'
 
 const Detail: React.FC = () => {
   const country = useCountry()
